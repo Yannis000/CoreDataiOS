@@ -28,9 +28,13 @@ class CategoryViewController: UITableViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! ListPlaceTableViewController
+        let cell = sender as! UITableViewCell
+        destination.currentCategory = categories[tableView.indexPath(for: cell)!.row]
+    }
     
-    
-    //tableViw Datasource and Delegate
+    //tableView Datasource and Delegate
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count

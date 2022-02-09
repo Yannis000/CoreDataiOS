@@ -51,4 +51,37 @@ class DataManager: NSObject {
         category.modificationDate = date
         saveContext()
     }
+    
+    func fetchLandmarks(searchQuery: String? = nil, category: Category) -> [Landmark] {
+        let fetchRequest = Landmark.fetchRequest()
+        let predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(Landmark.category), category])
+        
+        var predicates: [NSPredicate] = []
+        predicates.append(predicate)
+        
+        
+        let sortDescription = NSSortDescriptor(keyPath: \Category.name ,ascending: true)
+        fetchRequest.sortDescriptors = [sortDescription]
+        if let searchQuery = searchQuery, !searchQuery.isEmpty {
+            let predicate = NSPredicate(format: "%K contains[cd] %@",
+                                        argumentArray: [#keyPath(Landmark.title), searchQuery])
+            predicates.append(predicate)
+        }
+        do{
+            fetchRequest.predicate = NSCompoundPredicate(
+                type: .and,
+                subpredicates: predicates
+            )
+            let result = try container.viewContext.fetch(fetchRequest)
+            return result
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
+    func deleteLandmark(landmark: Landmark){
+        container.viewContext.delete(landmark)
+        saveContext()
+    }
+    
 }

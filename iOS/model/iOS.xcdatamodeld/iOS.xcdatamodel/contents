@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="modificationDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="landmarks" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Landmark" inverseName="category" inverseEntity="Landmark"/>
+        <relationship name="landmarks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Landmark" inverseName="category" inverseEntity="Landmark"/>
     </entity>
     <entity name="Coordinate" representedClassName="Coordinate" syncable="YES" codeGenerationType="class">
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -14,7 +14,7 @@
     <entity name="Landmark" representedClassName="Landmark" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="desc" attributeType="String"/>
-        <attribute name="image" attributeType="Binary"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="isFavorite" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="modificaionDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String"/>
@@ -22,8 +22,8 @@
         <relationship name="coordinate" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Coordinate" inverseName="landmark" inverseEntity="Coordinate"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-54" positionY="-9" width="128" height="89"/>
-        <element name="Landmark" positionX="-36" positionY="36" width="128" height="149"/>
-        <element name="Coordinate" positionX="-18" positionY="90" width="128" height="74"/>
+        <element name="Category" positionX="611.7232666015625" positionY="-116.5948486328125" width="128" height="103"/>
+        <element name="Coordinate" positionX="-219.503173828125" positionY="54.25738525390625" width="128" height="88"/>
+        <element name="Landmark" positionX="168.24755859375" positionY="-158.8814086914062" width="128" height="149"/>
     </elements>
 </model>
