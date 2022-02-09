@@ -134,7 +134,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="DKg-N6-MaN">
                                 <connections>
-                                    <segue destination="8Yz-mo-e5T" kind="show" id="Bou-PU-ah1"/>
+                                    <segue destination="sIt-Sl-g6p" kind="presentation" id="WC1-2X-1Qv"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="slider.horizontal.3" catalog="system" id="CaN-4h-xvr"/>
@@ -150,33 +150,33 @@
             <objects>
                 <viewController id="8Yz-mo-e5T" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RDh-oJ-d75">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iXt-n1-BCE">
-                                <rect key="frame" x="20" y="156" width="204" height="34"/>
+                                <rect key="frame" x="20" y="72" width="204" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="latitude" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkG-VV-ayj">
-                                <rect key="frame" x="20" y="214" width="204" height="34"/>
+                                <rect key="frame" x="20" y="130" width="204" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="longitude" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t5f-jh-KT7">
-                                <rect key="frame" x="20" y="272" width="204" height="34"/>
+                                <rect key="frame" x="20" y="188" width="204" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xri-Bv-cPj">
-                                <rect key="frame" x="244" y="156" width="150" height="150"/>
+                                <rect key="frame" x="244" y="72" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="T3W-Pm-dui"/>
                                     <constraint firstAttribute="height" constant="150" id="Vj3-tv-8Ad"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="description" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sDF-di-hKe">
-                                <rect key="frame" x="20" y="330" width="374" height="34"/>
+                                <rect key="frame" x="20" y="246" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -185,26 +185,29 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="t5f-jh-KT7" firstAttribute="leading" secondItem="6pM-Xv-S0w" secondAttribute="leading" constant="20" id="2aT-ML-55V"/>
-                            <constraint firstItem="xri-Bv-cPj" firstAttribute="top" secondItem="6pM-Xv-S0w" secondAttribute="top" constant="16" id="5k2-3m-od8"/>
                             <constraint firstItem="t5f-jh-KT7" firstAttribute="top" secondItem="pkG-VV-ayj" secondAttribute="bottom" constant="24" id="6lH-Ds-P0c"/>
                             <constraint firstItem="pkG-VV-ayj" firstAttribute="top" secondItem="iXt-n1-BCE" secondAttribute="bottom" constant="24" id="83C-RS-FlW"/>
                             <constraint firstItem="6pM-Xv-S0w" firstAttribute="trailing" secondItem="sDF-di-hKe" secondAttribute="trailing" constant="20" id="FwR-rL-rpz"/>
                             <constraint firstItem="xri-Bv-cPj" firstAttribute="leading" secondItem="pkG-VV-ayj" secondAttribute="trailing" constant="20" id="Kx5-W6-4P2"/>
-                            <constraint firstItem="iXt-n1-BCE" firstAttribute="top" secondItem="6pM-Xv-S0w" secondAttribute="top" constant="16" id="NkL-93-3h7"/>
                             <constraint firstItem="xri-Bv-cPj" firstAttribute="leading" secondItem="t5f-jh-KT7" secondAttribute="trailing" constant="20" id="Sag-tQ-b8R"/>
                             <constraint firstItem="pkG-VV-ayj" firstAttribute="leading" secondItem="6pM-Xv-S0w" secondAttribute="leading" constant="20" id="VO0-m4-2iS"/>
+                            <constraint firstItem="xri-Bv-cPj" firstAttribute="top" secondItem="6pM-Xv-S0w" secondAttribute="top" constant="16" id="Wu8-i8-wi1"/>
                             <constraint firstItem="sDF-di-hKe" firstAttribute="top" secondItem="t5f-jh-KT7" secondAttribute="bottom" constant="24" id="cq2-s8-sPa"/>
+                            <constraint firstItem="iXt-n1-BCE" firstAttribute="top" secondItem="6pM-Xv-S0w" secondAttribute="top" constant="16" id="nkI-sA-aU3"/>
                             <constraint firstItem="xri-Bv-cPj" firstAttribute="leading" secondItem="iXt-n1-BCE" secondAttribute="trailing" constant="20" id="o6K-fG-n8h"/>
                             <constraint firstItem="6pM-Xv-S0w" firstAttribute="trailing" secondItem="xri-Bv-cPj" secondAttribute="trailing" constant="20" id="pXX-RI-pqF"/>
                             <constraint firstItem="sDF-di-hKe" firstAttribute="leading" secondItem="6pM-Xv-S0w" secondAttribute="leading" constant="20" id="t7w-5k-oW4"/>
                             <constraint firstItem="iXt-n1-BCE" firstAttribute="leading" secondItem="6pM-Xv-S0w" secondAttribute="leading" constant="20" id="wiK-Tc-FWg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="add / edit" id="yJE-yt-7mB"/>
+                    <navigationItem key="navigationItem" title="add / edit" id="yJE-yt-7mB">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hie-Ly-sA2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="r98-ZY-mZZ"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Yg-6K-3X0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2149" y="890"/>
+            <point key="canvasLocation" x="3057.971014492754" y="889.95535714285711"/>
         </scene>
         <!--Title-->
         <scene sceneID="abR-k2-icW">
@@ -295,7 +298,7 @@
                             <barButtonItem image="heart" catalog="system" id="Kid-Um-mpb"/>
                             <barButtonItem image="square.and.pencil" catalog="system" id="QcQ-kV-tih">
                                 <connections>
-                                    <segue destination="8Yz-mo-e5T" kind="show" id="Ixk-6F-RqJ"/>
+                                    <segue destination="sIt-Sl-g6p" kind="presentation" id="AkV-be-Dud"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -323,9 +326,27 @@
             </objects>
             <point key="canvasLocation" x="-97.101449275362327" y="161.38392857142856"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LfU-T5-pYf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sIt-Sl-g6p" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="y68-is-VQ9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8Yz-mo-e5T" kind="relationship" relationship="rootViewController" id="GmC-5g-8Wq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EEn-s5-uBr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2147.826086956522" y="889.95535714285711"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Bou-PU-ah1"/>
+        <segue reference="AkV-be-Dud"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
