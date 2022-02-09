@@ -10,13 +10,13 @@
         <!--Category-->
         <scene sceneID="ufz-7X-fjb">
             <objects>
-                <tableViewController id="oU4-4c-KBD" sceneMemberID="viewController">
+                <tableViewController id="oU4-4c-KBD" customClass="CategoryViewController" customModule="iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="eA3-fS-m4y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="6sl-wE-vir" detailTextLabel="FIe-qn-DrY" style="IBUITableViewCellStyleSubtitle" id="mof-dk-8Pl">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" textLabel="6sl-wE-vir" detailTextLabel="FIe-qn-DrY" style="IBUITableViewCellStyleSubtitle" id="mof-dk-8Pl">
                                 <rect key="frame" x="20" y="32" width="374" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mof-dk-8Pl" id="jgR-6Q-vNg">
@@ -48,7 +48,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Category" id="GL6-Gb-gsH">
                         <barButtonItem key="leftBarButtonItem" title="filter" id="Hzl-p6-yUT"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="N1S-md-Yf9"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="N1S-md-Yf9">
+                            <connections>
+                                <action selector="addNewCategory:" destination="oU4-4c-KBD" id="zIq-o4-Lhf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H07-KY-TIt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
