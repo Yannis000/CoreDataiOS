@@ -11,13 +11,13 @@
         <!--Category-->
         <scene sceneID="ufz-7X-fjb">
             <objects>
-                <tableViewController id="oU4-4c-KBD" sceneMemberID="viewController">
+                <tableViewController id="oU4-4c-KBD" customClass="CategoryViewController" customModule="iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="eA3-fS-m4y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="6sl-wE-vir" detailTextLabel="FIe-qn-DrY" style="IBUITableViewCellStyleSubtitle" id="mof-dk-8Pl">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" textLabel="6sl-wE-vir" detailTextLabel="FIe-qn-DrY" style="IBUITableViewCellStyleSubtitle" id="mof-dk-8Pl">
                                 <rect key="frame" x="20" y="32" width="374" height="50.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mof-dk-8Pl" id="jgR-6Q-vNg">
@@ -25,14 +25,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6sl-wE-vir">
-                                            <rect key="frame" x="20" y="6" width="35" height="20.5"/>
+                                            <rect key="frame" x="20" y="7.5" width="30" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FIe-qn-DrY">
-                                            <rect key="frame" x="20" y="26.5" width="53" height="18"/>
+                                            <rect key="frame" x="20" y="27" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <nil key="textColor"/>
@@ -50,12 +50,14 @@
                             <outlet property="delegate" destination="oU4-4c-KBD" id="fyt-fy-rgF"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="Ked-go-ms1"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Category" id="GL6-Gb-gsH">
                         <barButtonItem key="leftBarButtonItem" title="filter" id="Hzl-p6-yUT"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="N1S-md-Yf9"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="N1S-md-Yf9">
+                            <connections>
+                                <action selector="addNewCategory:" destination="oU4-4c-KBD" id="zIq-o4-Lhf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -66,7 +68,7 @@
         <!--Title-->
         <scene sceneID="qlU-v7-SjV">
             <objects>
-                <tableViewController modalPresentationStyle="fullScreen" id="q5i-cs-QA7" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="q5i-cs-QA7" customClass="ListPlaceTableViewController" customModule="iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="zBZ-uT-1nm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
