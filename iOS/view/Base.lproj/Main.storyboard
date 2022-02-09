@@ -25,14 +25,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6sl-wE-vir">
-                                            <rect key="frame" x="20" y="7.5" width="30" height="17"/>
+                                            <rect key="frame" x="20" y="6" width="35" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FIe-qn-DrY">
-                                            <rect key="frame" x="20" y="27" width="44" height="14.5"/>
+                                            <rect key="frame" x="20" y="26.5" width="53" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <nil key="textColor"/>
@@ -131,11 +131,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="Tbe-YN-gdD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DKg-N6-MaN">
-                            <connections>
-                                <segue destination="8Yz-mo-e5T" kind="show" id="Bou-PU-ah1"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="DKg-N6-MaN">
+                                <connections>
+                                    <segue destination="8Yz-mo-e5T" kind="show" id="Bou-PU-ah1"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="slider.horizontal.3" catalog="system" id="CaN-4h-xvr"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ax1-eG-Ee3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -322,7 +325,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ixk-6F-RqJ"/>
+        <segue reference="Bou-PU-ah1"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
