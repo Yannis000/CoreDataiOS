@@ -22,8 +22,8 @@
         <relationship name="coordinate" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Coordinate" inverseName="landmark" inverseEntity="Coordinate"/>
     </entity>
     <elements>
-        <element name="Category" positionX="611.7232666015625" positionY="-116.5948486328125" width="128" height="103"/>
-        <element name="Coordinate" positionX="-219.503173828125" positionY="54.25738525390625" width="128" height="88"/>
-        <element name="Landmark" positionX="168.24755859375" positionY="-158.8814086914062" width="128" height="149"/>
+        <element name="Category" positionX="-54" positionY="-9" width="128" height="89"/>
+        <element name="Coordinate" positionX="-18" positionY="90" width="128" height="74"/>
+        <element name="Landmark" positionX="-36" positionY="36" width="128" height="149"/>
     </elements>
 </model>
