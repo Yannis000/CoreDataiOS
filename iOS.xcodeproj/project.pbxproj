@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082EAEA227B3F05E00602F1A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EAEA127B3F05E00602F1A /* DataManager.swift */; };
 		08E7245B27B3CC2D006016E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7245A27B3CC2D006016E7 /* AppDelegate.swift */; };
 		08E7245D27B3CC2D006016E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7245C27B3CC2D006016E7 /* SceneDelegate.swift */; };
 		08E7245F27B3CC2D006016E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7245E27B3CC2D006016E7 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		082EAEA127B3F05E00602F1A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		08E7245727B3CC2D006016E7 /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08E7245A27B3CC2D006016E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08E7245C27B3CC2D006016E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				08E7246327B3CC2D006016E7 /* iOS.xcdatamodeld */,
+				082EAEA127B3F05E00602F1A /* DataManager.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08E7245F27B3CC2D006016E7 /* ViewController.swift in Sources */,
+				082EAEA227B3F05E00602F1A /* DataManager.swift in Sources */,
 				08E7245B27B3CC2D006016E7 /* AppDelegate.swift in Sources */,
 				08E7245D27B3CC2D006016E7 /* SceneDelegate.swift in Sources */,
 				08E7246527B3CC2D006016E7 /* iOS.xcdatamodeld in Sources */,

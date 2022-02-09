@@ -13,46 +13,6 @@ class CategoryViewController: UITableViewController {
     
     private var categories: [Category] = []
     
-    private var container: NSPersistentContainer{
-        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-    }
-    
-    // Core Data
-    
-    private func saveContext(){
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-    }
-    
-    private func fetchCategories(searchQuery: String? = nil) -> [Category] {
-        let fetchRequest = Category.fetchRequest()
-        
-        let sortDescription = NSSortDescriptor(keyPath: \Category.name ,ascending: true)
-        fetchRequest.sortDescriptors = [sortDescription]
-        if let searchQuery = searchQuery, !searchQuery.isEmpty {
-            let predicate = NSPredicate(format: "%K contains[cd] %@",
-                                        argumentArray: [#keyPath(Category.name), searchQuery])
-            fetchRequest.predicate = predicate
-        }
-        do{
-            let result = try container.viewContext.fetch(fetchRequest)
-            return result
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
-    
-    private func deleteCategory(category: Category){
-        container.viewContext.delete(category)
-        saveContext()
-    }
-    
-    private func createCategory(title: String, date: Date = Date()){
-        let category = Category(context: container.viewContext)
-        category.name = title
-        category.creationDate = date
-        category.modificationDate = date
-        saveContext()
-    }
     
     //Lifecycle
 
@@ -63,10 +23,12 @@ class CategoryViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         
-        categories = fetchCategories()
+        categories = DataManager.sharedDataManager.fetchCategories()
         tableView.reloadData()
         // Do any additional setup after loading the view.
     }
+    
+    
     
     //tableViw Datasource and Delegate
     
@@ -89,7 +51,7 @@ class CategoryViewController: UITableViewController {
             guard let self = self else {
                 return
             }
-            self.deleteCategory(category: category)
+            DataManager.sharedDataManager.deleteCategory(category: category)
             self.categories.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
@@ -115,8 +77,8 @@ class CategoryViewController: UITableViewController {
                   let textField = alertController.textFields?.first else {
                 return
             }
-            self.createCategory(title: textField.text!)
-            self.categories = self.fetchCategories()
+            DataManager.sharedDataManager.createCategory(title: textField.text!)
+            self.categories = DataManager.sharedDataManager.fetchCategories()
             self.tableView.reloadData()
         }
         
@@ -133,7 +95,7 @@ class CategoryViewController: UITableViewController {
 extension CategoryViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchQuery = searchController.searchBar.text
-        categories = fetchCategories(searchQuery: searchQuery)
+        categories = DataManager.sharedDataManager.fetchCategories(searchQuery: searchQuery)
         tableView.reloadData()
     }
 
