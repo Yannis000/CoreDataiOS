@@ -134,7 +134,8 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="DKg-N6-MaN">
                                 <connections>
-                                    <segue destination="sIt-Sl-g6p" kind="presentation" id="WC1-2X-1Qv"/>
+                                    <action selector="addPlace:" destination="q5i-cs-QA7" id="zBU-NT-g1K"/>
+                                    <segue destination="sIt-Sl-g6p" kind="presentation" identifier="addPlace" id="WC1-2X-1Qv"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="slider.horizontal.3" catalog="system" id="CaN-4h-xvr"/>
@@ -148,22 +149,22 @@
         <!--add / edit-->
         <scene sceneID="M6X-U9-RTj">
             <objects>
-                <viewController id="8Yz-mo-e5T" sceneMemberID="viewController">
+                <viewController id="8Yz-mo-e5T" customClass="AddEditPlaceViewController" customModule="iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RDh-oJ-d75">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iXt-n1-BCE">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iXt-n1-BCE">
                                 <rect key="frame" x="20" y="72" width="204" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="latitude" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkG-VV-ayj">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="latitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkG-VV-ayj">
                                 <rect key="frame" x="20" y="130" width="204" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="longitude" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t5f-jh-KT7">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="longitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t5f-jh-KT7">
                                 <rect key="frame" x="20" y="188" width="204" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -175,7 +176,7 @@
                                     <constraint firstAttribute="height" constant="150" id="Vj3-tv-8Ad"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="description" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sDF-di-hKe">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sDF-di-hKe">
                                 <rect key="frame" x="20" y="246" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -201,9 +202,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="add / edit" id="yJE-yt-7mB">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hie-Ly-sA2"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="r98-ZY-mZZ"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hie-Ly-sA2">
+                            <connections>
+                                <action selector="cancel:" destination="8Yz-mo-e5T" id="yEp-ul-KiW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="r98-ZY-mZZ">
+                            <connections>
+                                <action selector="savePlace:" destination="8Yz-mo-e5T" id="wkV-0N-Une"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="desc" destination="sDF-di-hKe" id="2Bu-4d-BaV"/>
+                        <outlet property="imageView" destination="xri-Bv-cPj" id="TTV-e3-URs"/>
+                        <outlet property="latitude" destination="pkG-VV-ayj" id="TjK-RG-MlT"/>
+                        <outlet property="longitude" destination="t5f-jh-KT7" id="aBM-Nw-Vqm"/>
+                        <outlet property="placeTitle" destination="iXt-n1-BCE" id="5yt-5s-Dri"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Yg-6K-3X0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -298,7 +314,7 @@
                             <barButtonItem image="heart" catalog="system" id="Kid-Um-mpb"/>
                             <barButtonItem image="square.and.pencil" catalog="system" id="QcQ-kV-tih">
                                 <connections>
-                                    <segue destination="sIt-Sl-g6p" kind="presentation" id="AkV-be-Dud"/>
+                                    <segue destination="sIt-Sl-g6p" kind="presentation" identifier="editPlace" id="AkV-be-Dud"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -346,7 +362,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AkV-be-Dud"/>
+        <segue reference="WC1-2X-1Qv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>

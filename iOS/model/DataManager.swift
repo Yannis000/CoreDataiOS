@@ -60,23 +60,40 @@ class DataManager: NSObject {
         predicates.append(predicate)
         
         
-        let sortDescription = NSSortDescriptor(keyPath: \Category.name ,ascending: true)
-        fetchRequest.sortDescriptors = [sortDescription]
         if let searchQuery = searchQuery, !searchQuery.isEmpty {
             let predicate = NSPredicate(format: "%K contains[cd] %@",
                                         argumentArray: [#keyPath(Landmark.title), searchQuery])
             predicates.append(predicate)
         }
+        fetchRequest.predicate = NSCompoundPredicate(
+            type: .and,
+            subpredicates: predicates
+        )
         do{
-            fetchRequest.predicate = NSCompoundPredicate(
-                type: .and,
-                subpredicates: predicates
-            )
             let result = try container.viewContext.fetch(fetchRequest)
             return result
         } catch {
             fatalError(error.localizedDescription)
         }
+    }
+    
+    func createLandmark(title: String, date: Date = Date(), desc: String? = ""){
+        let landmark = Landmark(context: container.viewContext)
+        landmark.title = title
+        landmark.creationDate = date
+        landmark.modificationDate = date
+        landmark.isFavorite = false
+        landmark.desc = desc
+        landmark.coordinate = createCoordonate(latitude: 0.0, longitude: 0.0)
+        saveContext()
+    }
+    
+    func createCoordonate(latitude: Double, longitude: Double) -> Coordinate {
+        let coordinate = Coordinate(context: container.viewContext)
+        coordinate.latitude = latitude
+        coordinate.longitude = longitude
+        saveContext()
+        return coordinate
     }
     
     func deleteLandmark(landmark: Landmark){

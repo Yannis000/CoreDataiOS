@@ -19,6 +19,15 @@ class ListPlaceTableViewController: UITableViewController {
         self.landmarks = DataManager.sharedDataManager.fetchLandmarks(category: currentCategory)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "addPlace"){
+            let navViewController = segue.destination as! UINavigationController
+            let destination = navViewController.topViewController as! AddEditPlaceViewController
+            destination.currentCategory = currentCategory
+            destination.entete = "Add"
+        }
+    }
+    
     //tableView Datasource and Delegate
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,4 +59,16 @@ class ListPlaceTableViewController: UITableViewController {
     }
     
     
+}
+
+extension ListPlaceTableViewController : AddEditPlaceViewControllerDelegate{
+    func addEditPlaceViewControllerDidCancel(_ controller: AddEditPlaceViewController) {
+        dismiss(animated: true)
+    }
+
+    func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?) {
+        DataManager.sharedDataManager.createLandmark(title: title ?? "")
+        tableView.insertRows(at: [IndexPath(row: landmarks.count-1, section: 0)], with: .automatic)
+        dismiss(animated: true)
+    }
 }
