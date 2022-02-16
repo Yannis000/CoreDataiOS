@@ -11,7 +11,7 @@ class AddEditPlaceViewController: UIViewController {
 
     var currentCategory: Category!
     var entete: String = ""
-    
+    var landmark: Landmark!
     var delegate: AddEditPlaceViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -33,12 +33,21 @@ class AddEditPlaceViewController: UIViewController {
         guard let title = self.placeTitle.text else {
             return
         }
-        self.delegate?.addEditPlaceViewControllerAdd(self, title: title)
+        guard let lat = self.latitude.text else {
+            return
+        }
+        guard let long = self.longitude.text else {
+            return
+        }
+        guard let description = self.desc.text else {
+            return
+        }
+        self.delegate?.addEditPlaceViewControllerAdd(self, title: title, lat: Double(lat), long: Double(long), description: description)
     }
 }
 
 protocol AddEditPlaceViewControllerDelegate : AnyObject {
     func addEditPlaceViewControllerDidCancel(_ controller: AddEditPlaceViewController)
-    func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?)
+    func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?, lat: Double?, long: Double?, description: String?)
 }
 
