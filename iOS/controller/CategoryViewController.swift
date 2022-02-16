@@ -15,12 +15,14 @@ class CategoryViewController: UITableViewController {
     
     
     //Lifecycle
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         FilterManager.sharedFilterManager.delegate = self
         var menu: UIMenu {
-            return UIMenu(title: "Filtrer", options: .displayInline, children: [FilterManager.sharedFilterManager.dateItem,
+            return UIMenu(title: "Filtrer", options: .displayInline, children: [FilterManager.sharedFilterManager.dateCreaItem,
+                                                                                FilterManager.sharedFilterManager.dateModifItem,
                                                                                 FilterManager.sharedFilterManager.nameItem])
         }
         btnFiltres.menu = menu
@@ -100,7 +102,35 @@ class CategoryViewController: UITableViewController {
     
     @IBOutlet weak var btnFiltres: UIBarButtonItem!
     
-    
+    func editCategory(){
+        //let category = categories[indexPath.row]
+        
+        let alertController = UIAlertController(title: "NOMCATEGORIE",
+        message: "Modifier le nom",
+                                                preferredStyle: .alert)
+        alertController.addTextField{
+            textField in textField.placeholder = "Nom..."
+        }
+        
+        let cancelAction = UIAlertAction(title: "Annuler",
+                                         style: .cancel,
+                                         handler: nil)
+        let saveAction = UIAlertAction(title: "Sauvegarder",
+                                       style: .default) { [weak self] _ in
+            guard let self = self,
+                  let textField = alertController.textFields?.first else {
+                return
+            }
+            //self.editCategory(category: category, title: textField.text!)
+            self.categories = DataManager.sharedDataManager.fetchCategories()
+            self.tableView.reloadData()
+        }
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true)
+    }
 }
 
 extension CategoryViewController: UISearchResultsUpdating {

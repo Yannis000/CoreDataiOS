@@ -15,13 +15,19 @@ class ListPlaceTableViewController: UITableViewController {
 
     @IBOutlet weak var btnFiltres: UIBarButtonItem!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = currentCategory.name
         self.landmarks = DataManager.sharedDataManager.fetchLandmarks(category: currentCategory)
         FilterManager.sharedFilterManager.delegate = self
         var menu: UIMenu {
-            return UIMenu(title: "Filtrer", options: .displayInline, children: [FilterManager.sharedFilterManager.dateItem,
+            return UIMenu(title: "Filtrer", options: .displayInline, children: [FilterManager.sharedFilterManager.dateCreaItem,
+                                                                                FilterManager.sharedFilterManager.dateModifItem,
                                                                                 FilterManager.sharedFilterManager.nameItem,
                                                                                 FilterManager.sharedFilterManager.favItem])
         }
@@ -59,6 +65,8 @@ class ListPlaceTableViewController: UITableViewController {
         cell.desc.text = place.desc
         if let image = place.image {
             cell.landmarkImage.image = UIImage(data: image)
+        } else {
+            cell.landmarkImage.image = UIImage(systemName: "photo")
         }
         
         return cell
@@ -83,6 +91,9 @@ class ListPlaceTableViewController: UITableViewController {
 }
 
 extension ListPlaceTableViewController : AddEditPlaceViewControllerDelegate{
+    func addEditPlaceViewControllerEdit(_ controller: AddEditPlaceViewController, landmark: Landmark, title: String?, lat: Double?, long: Double?, description: String?, image: Data) {
+    }
+    
     func addEditPlaceViewControllerDidCancel(_ controller: AddEditPlaceViewController) {
         dismiss(animated: true)
     }
@@ -98,14 +109,14 @@ extension ListPlaceTableViewController : AddEditPlaceViewControllerDelegate{
 extension ListPlaceTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchQuery = searchController.searchBar.text
-        landmarks = DataManager.sharedDataManager.fetchLandmarks(searchQuery: searchQuery, category: self.currentCategory)
+        landmarks = DataManager.sharedDataManager.fetchLandmarks(searchQuery: searchQuery, category: currentCategory)
         tableView.reloadData()
     }
 }
 
 extension ListPlaceTableViewController: FilterManagerDelegate {
     func filterHasChange() {
-        landmarks = DataManager.sharedDataManager.fetchLandmarks(category: self.currentCategory)
+        landmarks = DataManager.sharedDataManager.fetchLandmarks(category: currentCategory)
         tableView.reloadData()
     }
 }

@@ -12,7 +12,7 @@ class AddEditPlaceViewController: UIViewController, PHPickerViewControllerDelega
 
     var currentCategory: Category!
     var entete: String = ""
-    var landmark: Landmark!
+    var landmark: Landmark?
     
     var config = PHPickerConfiguration()
     
@@ -25,6 +25,16 @@ class AddEditPlaceViewController: UIViewController, PHPickerViewControllerDelega
         config.selectionLimit = 1
         config.filter = PHPickerFilter.images
         // Do any additional setup after loading the view.
+        if(entete == "Edit"){
+            placeTitle.text = landmark?.title
+            latitude.text = landmark?.coordinate?.latitude.description
+            longitude.text = landmark?.coordinate?.longitude.description
+            desc.text = landmark?.desc
+            if let image = landmark?.image {
+                imageView.image = UIImage(data: image)
+            }
+            
+        }
     }
     
     
@@ -63,13 +73,19 @@ class AddEditPlaceViewController: UIViewController, PHPickerViewControllerDelega
         guard let image = self.imageView.image?.pngData() else{
             return
         }
-        self.delegate?.addEditPlaceViewControllerAdd(self, title: title, lat: Double(lat), long: Double(long), description: description, image: image)
+        if(landmark == nil){
+            self.delegate?.addEditPlaceViewControllerAdd(self, title: title, lat: Double(lat), long: Double(long), description: description, image: image)
+        } else {
+            self.delegate?.addEditPlaceViewControllerEdit(self, landmark: landmark!, title: title, lat: Double(lat), long: Double(long), description: description, image: image)
+        }
+        
     }
 }
 
 protocol AddEditPlaceViewControllerDelegate : AnyObject {
     func addEditPlaceViewControllerDidCancel(_ controller: AddEditPlaceViewController)
     func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?, lat: Double?, long: Double?, description: String?, image: Data)
+    func addEditPlaceViewControllerEdit(_ controller: AddEditPlaceViewController, landmark: Landmark, title: String?, lat: Double?, long: Double?, description: String?, image: Data)
 }
 
 extension AddEditPlaceViewController{

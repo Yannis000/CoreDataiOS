@@ -34,8 +34,10 @@ class DataManager: NSObject {
         do{
             var result = try container.viewContext.fetch(fetchRequest)
             switch (FilterManager.sharedFilterManager.filter){
-            case FilterType.date:
-                result.sort(by: { $0.creationDate!.compare($1.creationDate!) == .orderedAscending})
+            case FilterType.dateC:
+                result.sort(by: { $0.creationDate!.compare($1.creationDate!) == .orderedDescending})
+            case FilterType.dateM:
+                result.sort(by: { $0.modificationDate!.compare($1.modificationDate!) == .orderedDescending})
             case FilterType.name:
                 result.sort(by: { $0.name!.compare($1.name!) == .orderedAscending})
             case FilterType.fav:
@@ -80,8 +82,10 @@ class DataManager: NSObject {
         do{
             var result = try container.viewContext.fetch(fetchRequest)
             switch (FilterManager.sharedFilterManager.filter){
-            case FilterType.date:
-                result.sort(by: { $0.creationDate!.compare($1.creationDate!) == .orderedAscending})
+            case FilterType.dateC:
+                result.sort(by: { $0.creationDate!.compare($1.creationDate!) == .orderedDescending})
+            case FilterType.dateM:
+                result.sort(by: { $0.modificationDate!.compare($1.modificationDate!) == .orderedDescending})
             case FilterType.name:
                 result.sort(by: { $0.title!.compare($1.title!) == .orderedAscending})
             case FilterType.fav:
@@ -100,8 +104,18 @@ class DataManager: NSObject {
         landmark.modificationDate = date
         landmark.isFavorite = false
         landmark.desc = desc
-        landmark.coordinate = createCoordonate(latitude: 0.0, longitude: 0.0)
+        landmark.coordinate = createCoordonate(latitude: lat ?? 0.0, longitude: long ?? 0.0)
         landmark.category = cat
+        landmark.image = image
+        saveContext()
+    }
+    
+    func editLandmark(landmark: Landmark, title: String, date: Date = Date(), lat: Double?, long: Double?, desc: String? = "", image: Data){
+        landmark.title = title
+        landmark.modificationDate = date
+        landmark.isFavorite = false
+        landmark.desc = desc
+        landmark.coordinate = createCoordonate(latitude: lat ?? 0.0, longitude: long ?? 0.0)
         landmark.image = image
         saveContext()
     }
