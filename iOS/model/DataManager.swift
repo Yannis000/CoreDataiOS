@@ -77,7 +77,7 @@ class DataManager: NSObject {
         }
     }
     
-    func createLandmark(title: String, date: Date = Date(), lat: Double?, long: Double?, desc: String? = "", cat: Category){
+    func createLandmark(title: String, date: Date = Date(), lat: Double?, long: Double?, desc: String? = "", image: Data, cat: Category){
         let landmark = Landmark(context: container.viewContext)
         landmark.title = title
         landmark.creationDate = date
@@ -86,6 +86,7 @@ class DataManager: NSObject {
         landmark.desc = desc
         landmark.coordinate = createCoordonate(latitude: 0.0, longitude: 0.0)
         landmark.category = cat
+        landmark.image = image
         saveContext()
     }
     
