@@ -6,20 +6,36 @@
 //
 
 import UIKit
+import PhotosUI
 
-class AddEditPlaceViewController: UIViewController {
+class AddEditPlaceViewController: UIViewController, PHPickerViewControllerDelegate {
 
     var currentCategory: Category!
     var entete: String = ""
+    
+    var config = PHPickerConfiguration()
     
     var delegate: AddEditPlaceViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = entete
+        self.imageView.image = UIImage(systemName: "plus")
+        config.selectionLimit = 1
+        config.filter = PHPickerFilter.images
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func addImage(_ sender: Any) {
+        
+        let pickerViewController = PHPickerViewController(configuration: config)
+        pickerViewController.delegate = self
+        self.present(pickerViewController, animated: true, completion: nil)
+        
+    }
+    
+    @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var placeTitle: UITextField!
     @IBOutlet weak var latitude: UITextField!
     @IBOutlet weak var longitude: UITextField!
@@ -41,4 +57,25 @@ protocol AddEditPlaceViewControllerDelegate : AnyObject {
     func addEditPlaceViewControllerDidCancel(_ controller: AddEditPlaceViewController)
     func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?)
 }
+
+extension AddEditPlaceViewController{
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        dismiss(animated: true, completion: nil)
+        guard !results.isEmpty else { return }
+        let imageResult = results[0]
+        if imageResult.itemProvider.canLoadObject(ofClass: UIImage.self) {
+            imageResult.itemProvider.loadObject(ofClass: UIImage.self) { (selectedImage, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    DispatchQueue.main.async {
+                        self.imageView.image = selectedImage as? UIImage
+                    }
+                }
+            }
+        }
+
+    }
+}
+
 

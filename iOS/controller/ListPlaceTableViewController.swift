@@ -35,11 +35,11 @@ class ListPlaceTableViewController: UITableViewController {
         return landmarks.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> LandmarkItemCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! LandmarkItemCell
         let place = landmarks[indexPath.row]
-        cell.textLabel?.text = place.title
-        cell.detailTextLabel?.text = DateFormatter.localizedString(from: place.creationDate!, dateStyle: .short, timeStyle: .short)
+        cell.title.text = place.title
+        cell.desc.text = "Description"
         
         return cell
     }
