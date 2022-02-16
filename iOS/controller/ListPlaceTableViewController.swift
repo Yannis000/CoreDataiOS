@@ -52,6 +52,8 @@ class ListPlaceTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func favButton(_ sender: Any) {
+    }
     //tableView Datasource and Delegate
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,8 +70,15 @@ class ListPlaceTableViewController: UITableViewController {
         } else {
             cell.landmarkImage.image = UIImage(systemName: "photo")
         }
+        cell.favorite.image = place.isFavorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        
+        cell.favButton.addTarget(self, action:#selector(addToFav), for: UIControl.Event.touchUpInside)
         
         return cell
+    }
+    
+    @objc func addToFav(_ sender: UIButton){
+        self.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -86,7 +95,6 @@ class ListPlaceTableViewController: UITableViewController {
         let swipeACtionConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
         return swipeACtionConfiguration
     }
-    
     
 }
 

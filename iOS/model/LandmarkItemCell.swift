@@ -14,5 +14,5 @@ class LandmarkItemCell: UITableViewCell{
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var favorite: UIImageView!
     @IBOutlet weak var landmarkImage: UIImageView!
-    
+    @IBOutlet weak var favButton: UIButton!
 }

@@ -26,6 +26,9 @@ class PlaceDetailsViewController: UIViewController {
     func loadData(){
         if let landmark = landmark {
             self.title = landmark.title
+            if let image = landmark.image{
+                imageView.image = UIImage(data: image)
+            }
             latitude.text = landmark.coordinate?.latitude.description
             longitude.text = landmark.coordinate?.longitude.description
             desc.text = landmark.desc
