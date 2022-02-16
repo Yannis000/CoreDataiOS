@@ -25,6 +25,7 @@ class ListPlaceTableViewController: UITableViewController {
             let destination = navViewController.topViewController as! AddEditPlaceViewController
             destination.currentCategory = currentCategory
             destination.entete = "Add"
+            destination.delegate = self
         }
     }
     
@@ -67,8 +68,10 @@ extension ListPlaceTableViewController : AddEditPlaceViewControllerDelegate{
     }
 
     func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?) {
-        DataManager.sharedDataManager.createLandmark(title: title ?? "")
-        tableView.insertRows(at: [IndexPath(row: landmarks.count-1, section: 0)], with: .automatic)
+        DataManager.sharedDataManager.createLandmark(title: title ?? "", cat: self.currentCategory)
+
+        self.landmarks = DataManager.sharedDataManager.fetchLandmarks(category: self.currentCategory)
+        self.tableView.reloadData()
         dismiss(animated: true)
     }
 }
