@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08279B8827BCF29200A93B3D /* PlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08279B8727BCF29200A93B3D /* PlaceDetailsViewController.swift */; };
 		082EAEA227B3F05E00602F1A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EAEA127B3F05E00602F1A /* DataManager.swift */; };
 		082EAEA427B3FB7B00602F1A /* ListPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EAEA327B3FB7B00602F1A /* ListPlaceTableViewController.swift */; };
 		082EAEA627B416C800602F1A /* AddEditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EAEA527B416C800602F1A /* AddEditPlaceViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08279B8727BCF29200A93B3D /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; };
 		082EAEA127B3F05E00602F1A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		082EAEA327B3FB7B00602F1A /* ListPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlaceTableViewController.swift; sourceTree = "<group>"; };
 		082EAEA527B416C800602F1A /* AddEditPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditPlaceViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				08E7245E27B3CC2D006016E7 /* ViewController.swift */,
 				082EAEA327B3FB7B00602F1A /* ListPlaceTableViewController.swift */,
 				082EAEA527B416C800602F1A /* AddEditPlaceViewController.swift */,
+				08279B8727BCF29200A93B3D /* PlaceDetailsViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			files = (
 				08E7245F27B3CC2D006016E7 /* ViewController.swift in Sources */,
 				082EAEA227B3F05E00602F1A /* DataManager.swift in Sources */,
+				08279B8827BCF29200A93B3D /* PlaceDetailsViewController.swift in Sources */,
 				08E7245B27B3CC2D006016E7 /* AppDelegate.swift in Sources */,
 				082EAEA627B416C800602F1A /* AddEditPlaceViewController.swift in Sources */,
 				08E7245D27B3CC2D006016E7 /* SceneDelegate.swift in Sources */,

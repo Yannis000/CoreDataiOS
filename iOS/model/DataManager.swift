@@ -71,14 +71,13 @@ class DataManager: NSObject {
         )
         do{
             let result = try container.viewContext.fetch(fetchRequest)
-            print(result)
             return result
         } catch {
             fatalError(error.localizedDescription)
         }
     }
     
-    func createLandmark(title: String, date: Date = Date(), desc: String? = "", cat: Category){
+    func createLandmark(title: String, date: Date = Date(), lat: Double?, long: Double?, desc: String? = "", cat: Category){
         let landmark = Landmark(context: container.viewContext)
         landmark.title = title
         landmark.creationDate = date

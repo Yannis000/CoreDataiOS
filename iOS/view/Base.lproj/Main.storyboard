@@ -121,7 +121,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="OX0-lJ-xNA" kind="show" id="pEN-ue-YXN"/>
+                                    <segue destination="OX0-lJ-xNA" kind="show" identifier="detailsPlace" id="pEN-ue-YXN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -228,7 +228,7 @@
         <!--Title-->
         <scene sceneID="abR-k2-icW">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="OX0-lJ-xNA" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="OX0-lJ-xNA" customClass="PlaceDetailsViewController" customModule="iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cR0-Sj-Qz6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -319,6 +319,14 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateCrea" destination="ufc-5r-A5G" id="PMj-ab-TQP"/>
+                        <outlet property="dateModif" destination="zu3-2z-JUn" id="z6c-DP-Bic"/>
+                        <outlet property="desc" destination="aJf-13-mTV" id="Hg9-5b-zqn"/>
+                        <outlet property="imageView" destination="xmm-z0-loK" id="6UO-TW-OdN"/>
+                        <outlet property="latitude" destination="akq-Ix-Zw7" id="kj7-mD-YAg"/>
+                        <outlet property="longitude" destination="ugr-Iy-xD0" id="EMs-fz-5AF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDT-PM-0Jz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

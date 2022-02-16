@@ -26,6 +26,10 @@ class ListPlaceTableViewController: UITableViewController {
             destination.currentCategory = currentCategory
             destination.entete = "Add"
             destination.delegate = self
+        }else if(segue.identifier == "detailsPlace"){
+            let destination = segue.destination as! PlaceDetailsViewController
+            let cell = sender as! UITableViewCell
+            destination.landmark = landmarks[tableView.indexPath(for: cell)!.row]
         }
     }
     
@@ -67,9 +71,8 @@ extension ListPlaceTableViewController : AddEditPlaceViewControllerDelegate{
         dismiss(animated: true)
     }
 
-    func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?) {
-        DataManager.sharedDataManager.createLandmark(title: title ?? "", cat: self.currentCategory)
-
+    func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?, lat: Double?, long: Double?, description: String?) {
+        DataManager.sharedDataManager.createLandmark(title: title ?? "", lat: lat, long: long, desc: description ?? "", cat: self.currentCategory)
         self.landmarks = DataManager.sharedDataManager.fetchLandmarks(category: self.currentCategory)
         self.tableView.reloadData()
         dismiss(animated: true)
