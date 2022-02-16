@@ -13,10 +13,23 @@ class ListPlaceTableViewController: UITableViewController {
     
     var landmarks: [Landmark] = []
 
+    @IBOutlet weak var btnFiltres: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = currentCategory.name
         self.landmarks = DataManager.sharedDataManager.fetchLandmarks(category: currentCategory)
+        FilterManager.sharedFilterManager.delegate = self
+        var menu: UIMenu {
+            return UIMenu(title: "Filtrer", options: .displayInline, children: [FilterManager.sharedFilterManager.dateItem,
+                                                                                FilterManager.sharedFilterManager.nameItem,
+                                                                                FilterManager.sharedFilterManager.favItem])
+        }
+        btnFiltres.menu = menu
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,5 +92,20 @@ extension ListPlaceTableViewController : AddEditPlaceViewControllerDelegate{
         self.landmarks = DataManager.sharedDataManager.fetchLandmarks(category: self.currentCategory)
         self.tableView.reloadData()
         dismiss(animated: true)
+    }
+}
+
+extension ListPlaceTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchQuery = searchController.searchBar.text
+        landmarks = DataManager.sharedDataManager.fetchLandmarks(searchQuery: searchQuery, category: self.currentCategory)
+        tableView.reloadData()
+    }
+}
+
+extension ListPlaceTableViewController: FilterManagerDelegate {
+    func filterHasChange() {
+        landmarks = DataManager.sharedDataManager.fetchLandmarks(category: self.currentCategory)
+        tableView.reloadData()
     }
 }

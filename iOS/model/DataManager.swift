@@ -32,7 +32,15 @@ class DataManager: NSObject {
             fetchRequest.predicate = predicate
         }
         do{
-            let result = try container.viewContext.fetch(fetchRequest)
+            var result = try container.viewContext.fetch(fetchRequest)
+            switch (FilterManager.sharedFilterManager.filter){
+            case FilterType.date:
+                result.sort(by: { $0.creationDate!.compare($1.creationDate!) == .orderedAscending})
+            case FilterType.name:
+                result.sort(by: { $0.name!.compare($1.name!) == .orderedAscending})
+            case FilterType.fav:
+                break
+            }
             return result
         } catch {
             fatalError(error.localizedDescription)
@@ -70,7 +78,15 @@ class DataManager: NSObject {
             subpredicates: predicates
         )
         do{
-            let result = try container.viewContext.fetch(fetchRequest)
+            var result = try container.viewContext.fetch(fetchRequest)
+            switch (FilterManager.sharedFilterManager.filter){
+            case FilterType.date:
+                result.sort(by: { $0.creationDate!.compare($1.creationDate!) == .orderedAscending})
+            case FilterType.name:
+                result.sort(by: { $0.title!.compare($1.title!) == .orderedAscending})
+            case FilterType.fav:
+                result = result.filter{ $0.isFavorite == true }
+            }
             return result
         } catch {
             fatalError(error.localizedDescription)

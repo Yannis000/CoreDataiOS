@@ -18,6 +18,12 @@ class CategoryViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        FilterManager.sharedFilterManager.delegate = self
+        var menu: UIMenu {
+            return UIMenu(title: "Filtrer", options: .displayInline, children: [FilterManager.sharedFilterManager.dateItem,
+                                                                                FilterManager.sharedFilterManager.nameItem])
+        }
+        btnFiltres.menu = menu
         
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -92,7 +98,8 @@ class CategoryViewController: UITableViewController {
         present(alertController, animated: true)
     }
     
-
+    @IBOutlet weak var btnFiltres: UIBarButtonItem!
+    
     
 }
 
@@ -103,5 +110,12 @@ extension CategoryViewController: UISearchResultsUpdating {
         tableView.reloadData()
     }
 
+}
+
+extension CategoryViewController: FilterManagerDelegate {
+    func filterHasChange() {
+        categories = DataManager.sharedDataManager.fetchCategories()
+        tableView.reloadData()
+    }
 }
 

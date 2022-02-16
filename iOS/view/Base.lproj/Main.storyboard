@@ -60,6 +60,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="btnFiltres" destination="Hzl-p6-yUT" id="fbN-QD-Z84"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H07-KY-TIt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -149,6 +152,9 @@
                             <barButtonItem title="Item" image="slider.horizontal.3" catalog="system" id="CaN-4h-xvr"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="btnFiltres" destination="CaN-4h-xvr" id="ps8-KJ-EEI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ax1-eG-Ee3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
