@@ -20,6 +20,10 @@ class PlaceDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
+    }
+    
+    func loadData(){
         if let landmark = landmark {
             self.title = landmark.title
             latitude.text = landmark.coordinate?.latitude.description
@@ -29,6 +33,43 @@ class PlaceDetailsViewController: UIViewController {
             dateModif.text = DateFormatter.localizedString(from: landmark.modificationDate!, dateStyle: .short, timeStyle: .short)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "editPlace"){
+            let navViewController = segue.destination as! UINavigationController
+            let destination = navViewController.topViewController as! AddEditPlaceViewController
+            destination.currentCategory = landmark.category
+            destination.entete = "Edit"
+            destination.landmark = landmark
+            destination.delegate = self
+        }
+    }
 
 
+}
+
+extension PlaceDetailsViewController : AddEditPlaceViewControllerDelegate{
+    func addEditPlaceViewControllerEdit(_ controller: AddEditPlaceViewController,
+                                        landmark: Landmark,
+                                        title: String?,
+                                        lat: Double?,
+                                        long: Double?,
+                                        description: String?,
+                                        image: Data) {
+        DataManager.sharedDataManager.editLandmark(landmark: landmark,
+                                                   title: title ?? "",
+                                                   lat: lat,
+                                                   long: long,
+                                                   desc: description ?? "",
+                                                   image: image)
+        loadData()
+        dismiss(animated: true)
+    }
+    
+    func addEditPlaceViewControllerDidCancel(_ controller: AddEditPlaceViewController) {
+        dismiss(animated: true)
+    }
+
+    func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?, lat: Double?, long: Double?, description: String?, image: Data) {
+    }
 }
