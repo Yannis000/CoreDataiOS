@@ -43,7 +43,7 @@ class ListPlaceTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! LandmarkItemCell
         let place = landmarks[indexPath.row]
         cell.title.text = place.title
-        cell.desc.text = "Description"
+        cell.desc.text = place.desc
         if let image = place.image {
             cell.landmarkImage.image = UIImage(data: image)
         }

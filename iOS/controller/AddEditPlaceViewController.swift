@@ -60,21 +60,16 @@ class AddEditPlaceViewController: UIViewController, PHPickerViewControllerDelega
         guard let description = self.desc.text else {
             return
         }
-        self.delegate?.addEditPlaceViewControllerAdd(self, title: title, lat: Double(lat), long: Double(long), description: description)
         guard let image = self.imageView.image?.pngData() else{
             return
         }
-        guard let desc = self.desc.text else{
-            return
-        }
-        self.delegate?.addEditPlaceViewControllerAdd(self, title: title, desc: desc, image: image)
+        self.delegate?.addEditPlaceViewControllerAdd(self, title: title, lat: Double(lat), long: Double(long), description: description, image: image)
     }
 }
 
 protocol AddEditPlaceViewControllerDelegate : AnyObject {
     func addEditPlaceViewControllerDidCancel(_ controller: AddEditPlaceViewController)
-    func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?, lat: Double?, long: Double?, description: String?)
-    func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?, desc: String?, image: Data)
+    func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?, lat: Double?, long: Double?, description: String?, image: Data)
 }
 
 extension AddEditPlaceViewController{
