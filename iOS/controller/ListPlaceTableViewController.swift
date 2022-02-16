@@ -40,6 +40,9 @@ class ListPlaceTableViewController: UITableViewController {
         let place = landmarks[indexPath.row]
         cell.title.text = place.title
         cell.desc.text = "Description"
+        if let image = place.image {
+            cell.landmarkImage.image = UIImage(data: image)
+        }
         
         return cell
     }
@@ -67,8 +70,8 @@ extension ListPlaceTableViewController : AddEditPlaceViewControllerDelegate{
         dismiss(animated: true)
     }
 
-    func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?) {
-        DataManager.sharedDataManager.createLandmark(title: title ?? "", cat: self.currentCategory)
+    func addEditPlaceViewControllerAdd(_ controller: AddEditPlaceViewController, title: String?, desc: String?, image: Data) {
+        DataManager.sharedDataManager.createLandmark(title: title ?? "", desc: desc ?? "", image: image, cat: self.currentCategory)
 
         self.landmarks = DataManager.sharedDataManager.fetchLandmarks(category: self.currentCategory)
         self.tableView.reloadData()
