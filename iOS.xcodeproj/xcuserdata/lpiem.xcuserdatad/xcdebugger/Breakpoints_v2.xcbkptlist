@@ -14,8 +14,8 @@
             filePath = "iOS/controller/ListPlaceTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "addEditPlaceViewControllerAdd(_:title:lat:long:description:)"
             landmarkType = "7">
          </BreakpointContent>
