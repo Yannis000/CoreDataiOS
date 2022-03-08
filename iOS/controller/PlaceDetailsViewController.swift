@@ -41,8 +41,7 @@ class PlaceDetailsViewController: UIViewController {
     
     @IBAction func likeItem(_ sender: Any) {
         DataManager.sharedDataManager.toggleFavorite(landmark: landmark)
-        landmark.isFavorite.toggle()
-        updateLike()
+        loadData()
     }
     
     func updateLike(){
