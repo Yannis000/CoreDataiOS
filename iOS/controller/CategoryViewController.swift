@@ -53,6 +53,7 @@ class CategoryViewController: UITableViewController {
         let category = categories[indexPath.row]
         cell.title.text = category.name
         cell.date.text = DateFormatter.localizedString(from: category.creationDate!, dateStyle: .short, timeStyle: .short)
+        cell.delegate = self
         return cell
     }
     
