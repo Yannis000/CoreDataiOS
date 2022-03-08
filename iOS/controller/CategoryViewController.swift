@@ -102,14 +102,12 @@ class CategoryViewController: UITableViewController {
     
     @IBOutlet weak var btnFiltres: UIBarButtonItem!
     
-    func editCategory(){
-        //let category = categories[indexPath.row]
-        
+    func editCategory(category: Category){
         let alertController = UIAlertController(title: "NOMCATEGORIE",
         message: "Modifier le nom",
                                                 preferredStyle: .alert)
         alertController.addTextField{
-            textField in textField.placeholder = "Nom..."
+            textField in textField.text = category.name
         }
         
         let cancelAction = UIAlertAction(title: "Annuler",
@@ -121,7 +119,8 @@ class CategoryViewController: UITableViewController {
                   let textField = alertController.textFields?.first else {
                 return
             }
-            //self.editCategory(category: category, title: textField.text!)
+            category.name = textField.text
+            self.editCategory(category: category)
             self.categories = DataManager.sharedDataManager.fetchCategories()
             self.tableView.reloadData()
         }
@@ -146,6 +145,12 @@ extension CategoryViewController: FilterManagerDelegate {
     func filterHasChange() {
         categories = DataManager.sharedDataManager.fetchCategories()
         tableView.reloadData()
+    }
+}
+
+extension CategoryViewController: CategoryItemCellDelegate{
+    func categoryItemCell(_ cell: CategoryItemCell, didEditFor: Category) {
+        editCategory(category: didEditFor)
     }
 }
 

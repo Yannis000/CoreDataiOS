@@ -22,9 +22,10 @@ class CategoryItemCell: UITableViewCell{
     var category: Category!
     
     var delegate: CategoryItemCellDelegate!
-    
+
     @IBAction func editItem(_ sender: Any) {
         self.delegate.categoryItemCell(self, didEditFor: category)
     }
+    
     
 }

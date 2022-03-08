@@ -17,28 +17,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryItemCell" id="mof-dk-8Pl" customClass="CategoryItemCell" customModule="iOS" customModuleProvider="target">
-                                <rect key="frame" x="20" y="32" width="374" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" id="mof-dk-8Pl" customClass="CategoryItemCell" customModule="iOS" customModuleProvider="target">
+                                <rect key="frame" x="20" y="32" width="374" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mof-dk-8Pl" id="jgR-6Q-vNg">
-                                    <rect key="frame" x="0.0" y="0.0" width="345.5" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="345.5" height="55.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Titre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhM-27-3yX">
-                                            <rect key="frame" x="20" y="11" width="42" height="24"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhM-27-3yX">
+                                            <rect key="frame" x="8" y="12" width="42" height="31.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-lw-kqd">
-                                            <rect key="frame" x="313" y="11" width="24" height="24"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bg-OI-fA1">
+                                            <rect key="frame" x="299.5" y="12" width="46" height="31.5"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="square.and.pencil" catalog="system"/>
+                                            <connections>
+                                                <action selector="editItem:" destination="mof-dk-8Pl" eventType="touchUpInside" id="S6Q-vM-r7R"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5bg-OI-fA1" firstAttribute="top" secondItem="jgR-6Q-vNg" secondAttribute="top" constant="12" id="WWX-42-Bvv"/>
+                                        <constraint firstAttribute="trailing" secondItem="5bg-OI-fA1" secondAttribute="trailing" id="drn-a3-EVq"/>
+                                        <constraint firstItem="mhM-27-3yX" firstAttribute="leading" secondItem="jgR-6Q-vNg" secondAttribute="leading" constant="8" id="ePu-Zq-FV7"/>
+                                        <constraint firstAttribute="bottom" secondItem="mhM-27-3yX" secondAttribute="bottom" constant="12" id="etv-rx-ivX"/>
+                                        <constraint firstAttribute="bottom" secondItem="5bg-OI-fA1" secondAttribute="bottom" constant="12" id="g4X-cD-rHI"/>
+                                        <constraint firstItem="mhM-27-3yX" firstAttribute="top" secondItem="jgR-6Q-vNg" secondAttribute="top" constant="12" id="hY7-Dl-Sh7"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="editButton" destination="Ch2-lw-kqd" id="Ocx-yP-5GJ"/>
+                                    <outlet property="edit" destination="5bg-OI-fA1" id="pum-Q4-fBp"/>
                                     <outlet property="title" destination="mhM-27-3yX" id="c3d-Rf-RWz"/>
                                     <segue destination="q5i-cs-QA7" kind="show" id="O3y-Br-xco"/>
                                 </connections>
