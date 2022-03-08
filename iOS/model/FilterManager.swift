@@ -38,8 +38,8 @@ class FilterManager: NSObject {
     }}
 
     var favItem: UIAction { return UIAction(title: "Favoris", image: UIImage(systemName: "person.fill.xmark.rtl")) { (action) in
-        if(self.filter != FilterType.dateC){
-            self.filter = FilterType.dateC
+        if(self.filter != FilterType.fav){
+            self.filter = FilterType.fav
             self.delegate?.filterHasChange()
         }
     }}
