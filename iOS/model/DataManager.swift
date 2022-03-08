@@ -119,6 +119,13 @@ class DataManager: NSObject {
         saveContext()
     }
     
+    func toggleFavorite(landmark: Landmark){
+        landmark.isFavorite.toggle()
+        saveContext()
+    }
+    
+    
+    
     func createCoordonate(latitude: Double, longitude: Double) -> Coordinate {
         let coordinate = Coordinate(context: container.viewContext)
         coordinate.latitude = latitude
