@@ -110,13 +110,12 @@ class DataManager: NSObject {
         saveContext()
     }
     
-    func editLandmark(landmark: Landmark, title: String, date: Date = Date(), lat: Double?, long: Double?, desc: String? = "", image: Data){
-        landmark.title = title
+    func editLandmark(landmark: Landmark, title: String? = nil, date: Date = Date(), lat: Double? = nil, long: Double? = nil, desc: String? = nil, image: Data? = nil){
+        landmark.title = title ?? landmark.title
         landmark.modificationDate = date
-        landmark.isFavorite = false
-        landmark.desc = desc
-        landmark.coordinate = createCoordonate(latitude: lat ?? 0.0, longitude: long ?? 0.0)
-        landmark.image = image
+        landmark.desc = desc ?? landmark.desc
+        landmark.coordinate = createCoordonate(latitude: lat ?? (landmark.coordinate?.latitude ?? 0.0), longitude: long ?? (landmark.coordinate?.longitude ?? 0.0))
+        landmark.image = image ?? landmark.image
         saveContext()
     }
     
