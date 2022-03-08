@@ -51,6 +51,7 @@ class CategoryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> CategoryItemCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryItemCell
         let category = categories[indexPath.row]
+        cell.configure(category: category)
         cell.title.text = category.name
         cell.date.text = DateFormatter.localizedString(from: category.creationDate!, dateStyle: .short, timeStyle: .short)
         cell.delegate = self
@@ -104,7 +105,7 @@ class CategoryViewController: UITableViewController {
     @IBOutlet weak var btnFiltres: UIBarButtonItem!
     
     func editCategory(category: Category){
-        let alertController = UIAlertController(title: "NOMCATEGORIE",
+        let alertController = UIAlertController(title: "Modification d'une catégorie",
         message: "Modifier le nom",
                                                 preferredStyle: .alert)
         alertController.addTextField{
@@ -120,8 +121,7 @@ class CategoryViewController: UITableViewController {
                   let textField = alertController.textFields?.first else {
                 return
             }
-            category.name = textField.text
-            self.editCategory(category: category)
+            DataManager.sharedDataManager.editCategory(category: category, name: textField.text)
             self.categories = DataManager.sharedDataManager.fetchCategories()
             self.tableView.reloadData()
         }

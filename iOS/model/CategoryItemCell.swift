@@ -28,5 +28,10 @@ class CategoryItemCell: UITableViewCell{
         self.delegate.categoryItemCell(self, didEditFor: category)
     }
     
+    func configure(category: Category){
+        self.category = category
+        title.text = category.name
+        date.text = DateFormatter.localizedString(from: category.creationDate!, dateStyle: .short, timeStyle: .short)
+    }
     
 }

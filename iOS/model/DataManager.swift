@@ -62,6 +62,12 @@ class DataManager: NSObject {
         saveContext()
     }
     
+    func editCategory(category: Category, name: String?, date : Date = Date()){
+        category.name = name ?? category.name
+        category.modificationDate = date
+        saveContext()
+    }
+    
     func fetchLandmarks(searchQuery: String? = nil, category: Category) -> [Landmark] {
         let fetchRequest = Landmark.fetchRequest()
         let predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(Landmark.category), category])
