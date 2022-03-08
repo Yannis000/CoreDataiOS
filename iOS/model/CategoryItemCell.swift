@@ -18,6 +18,7 @@ class CategoryItemCell: UITableViewCell{
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var edit: UIButton!
+    @IBOutlet weak var date: UILabel!
     
     var category: Category!
     

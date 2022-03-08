@@ -52,7 +52,7 @@ class CategoryViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryItemCell
         let category = categories[indexPath.row]
         cell.title.text = category.name
-        cell.detailTextLabel?.text = DateFormatter.localizedString(from: category.creationDate!, dateStyle: .short, timeStyle: .short)
+        cell.date.text = DateFormatter.localizedString(from: category.creationDate!, dateStyle: .short, timeStyle: .short)
         return cell
     }
     
