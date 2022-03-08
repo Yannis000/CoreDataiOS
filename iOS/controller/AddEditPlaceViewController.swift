@@ -28,6 +28,7 @@ class AddEditPlaceViewController: UIViewController, PHPickerViewControllerDelega
         desc.layer.cornerRadius = 8
         desc.layer.borderColor = UIColor.gray.cgColor
         desc.delegate = self
+        descPlaceholder.isHidden = landmark?.desc?.isEmpty ?? false ? false : true
         // Do any additional setup after loading the view.
         if(entete == "Edit"){
             placeTitle.text = landmark?.title
