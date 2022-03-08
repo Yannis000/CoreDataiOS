@@ -18,6 +18,7 @@
             endingLineNumber = "85"
             landmarkName = "tableView(_:trailingSwipeActionsConfigurationForRowAt:)"
             landmarkType = "7">
+<<<<<<< Updated upstream
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -66,6 +67,8 @@
             endingLineNumber = "50"
             landmarkName = "updateLike()"
             landmarkType = "7">
+=======
+>>>>>>> Stashed changes
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

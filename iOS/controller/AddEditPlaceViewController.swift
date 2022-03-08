@@ -91,6 +91,30 @@ class AddEditPlaceViewController: UIViewController, PHPickerViewControllerDelega
         }
         
     }
+    
+    func textField(textField: UITextField,shouldChangeCharactersInRange range: NSRange,replacementString string: String) -> Bool
+    {
+        let newCharacters = CharacterSet(charactersIn: string)
+        let boolIsNumber = NSCharacterSet.decimalDigits.isSuperset(of: newCharacters)
+        if boolIsNumber == true {
+            return true
+        } else {
+            if string == "." {
+                let countdots = textField.text!.components(separatedBy: ".").count - 1
+                if countdots == 0 {
+                    return true
+                } else {
+                    if countdots > 0 && string == "." {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+            } else {
+                return false
+            }
+        }
+    }
 }
 
 protocol AddEditPlaceViewControllerDelegate : AnyObject {
