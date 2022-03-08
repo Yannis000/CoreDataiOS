@@ -8,7 +8,7 @@
 import UIKit
 import PhotosUI
 
-class AddEditPlaceViewController: UIViewController, PHPickerViewControllerDelegate, UITextViewDelegate{
+class AddEditPlaceViewController: UIViewController, PHPickerViewControllerDelegate, UITextViewDelegate, UITextFieldDelegate{
 
     var currentCategory: Category!
     var entete: String = ""
@@ -38,6 +38,8 @@ class AddEditPlaceViewController: UIViewController, PHPickerViewControllerDelega
                 imageView.image = UIImage(data: image)
             }
         }
+        latitude.delegate = self
+        longitude.delegate = self
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -92,7 +94,7 @@ class AddEditPlaceViewController: UIViewController, PHPickerViewControllerDelega
         
     }
     
-    func textField(textField: UITextField,shouldChangeCharactersInRange range: NSRange,replacementString string: String) -> Bool
+    func textField(_ textField: UITextField,shouldChangeCharactersIn range: NSRange,replacementString string: String) -> Bool
     {
         let newCharacters = CharacterSet(charactersIn: string)
         let boolIsNumber = NSCharacterSet.decimalDigits.isSuperset(of: newCharacters)
