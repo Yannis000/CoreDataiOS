@@ -95,8 +95,18 @@ class DataManager: NSObject {
             case FilterType.name:
                 result.sort(by: { $0.title!.compare($1.title!) == .orderedAscending})
             case FilterType.fav:
-                result = result.filter{ $0.isFavorite == true }
+                result.sort { $0.isFavorite && !$1.isFavorite }
             }
+            return result
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
+    func fetchAllLandmarks() -> [Landmark] {
+        let fetchRequest = Landmark.fetchRequest()
+        do{
+            let result = try container.viewContext.fetch(fetchRequest)
             return result
         } catch {
             fatalError(error.localizedDescription)
