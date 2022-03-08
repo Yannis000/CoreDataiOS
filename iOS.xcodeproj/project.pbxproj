@@ -12,6 +12,7 @@
 		082EAEA227B3F05E00602F1A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EAEA127B3F05E00602F1A /* DataManager.swift */; };
 		082EAEA427B3FB7B00602F1A /* ListPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EAEA327B3FB7B00602F1A /* ListPlaceTableViewController.swift */; };
 		082EAEA627B416C800602F1A /* AddEditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EAEA527B416C800602F1A /* AddEditPlaceViewController.swift */; };
+		08B0594C27D74F6B0080ABB5 /* CategoryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0594B27D74F6B0080ABB5 /* CategoryItemCell.swift */; };
 		08B39E5A27BD2AB000A63CAA /* LandmarkItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B39E5927BD2AB000A63CAA /* LandmarkItemCell.swift */; };
 		08E7245B27B3CC2D006016E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7245A27B3CC2D006016E7 /* AppDelegate.swift */; };
 		08E7245D27B3CC2D006016E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7245C27B3CC2D006016E7 /* SceneDelegate.swift */; };
@@ -28,6 +29,7 @@
 		082EAEA127B3F05E00602F1A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		082EAEA327B3FB7B00602F1A /* ListPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlaceTableViewController.swift; sourceTree = "<group>"; };
 		082EAEA527B416C800602F1A /* AddEditPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditPlaceViewController.swift; sourceTree = "<group>"; };
+		08B0594B27D74F6B0080ABB5 /* CategoryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemCell.swift; sourceTree = "<group>"; };
 		08B39E5927BD2AB000A63CAA /* LandmarkItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkItemCell.swift; sourceTree = "<group>"; };
 		08E7245727B3CC2D006016E7 /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08E7245A27B3CC2D006016E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				082EAEA127B3F05E00602F1A /* DataManager.swift */,
 				08B39E5927BD2AB000A63CAA /* LandmarkItemCell.swift */,
 				08279B8B27BD05D200A93B3D /* FilterManager.swift */,
+				08B0594B27D74F6B0080ABB5 /* CategoryItemCell.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08E7245F27B3CC2D006016E7 /* CategoryViewController.swift in Sources */,
+				08B0594C27D74F6B0080ABB5 /* CategoryItemCell.swift in Sources */,
 				082EAEA227B3F05E00602F1A /* DataManager.swift in Sources */,
 				08279B8827BCF29200A93B3D /* PlaceDetailsViewController.swift in Sources */,
 				08B39E5A27BD2AB000A63CAA /* LandmarkItemCell.swift in Sources */,

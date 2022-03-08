@@ -15,7 +15,7 @@ class FilterManager: NSObject {
     var filter: FilterType = FilterType.dateM
     var delegate: FilterManagerDelegate?
     
-    var dateCreaItem: UIAction { return UIAction(title: "Par date de création", image: UIImage(systemName: "person.fill")) { (action) in
+    var dateCreaItem: UIAction { return UIAction(title: "Par date de création", image: UIImage(systemName: "calendar.badge.plus")) { (action) in
         if(self.filter != FilterType.dateC){
             self.filter = FilterType.dateC
             self.delegate?.filterHasChange()
@@ -23,14 +23,14 @@ class FilterManager: NSObject {
         
     }}
     
-    var dateModifItem: UIAction { return UIAction(title: "Par date de modification", image: UIImage(systemName: "person.fill")) { (action) in
+    var dateModifItem: UIAction { return UIAction(title: "Par date de modification", image: UIImage(systemName: "calendar.badge.clock")) { (action) in
         if(self.filter != FilterType.dateM){
             self.filter = FilterType.dateM
             self.delegate?.filterHasChange()
         }
     }}
 
-    var nameItem: UIAction { return UIAction(title: "Par nom", image: UIImage(systemName: "person.badge.plus")) { (action) in
+    var nameItem: UIAction { return UIAction(title: "Par nom", image: UIImage(systemName: "person.fill")) { (action) in
         if(self.filter != FilterType.name){
             self.filter = FilterType.name
             self.delegate?.filterHasChange()

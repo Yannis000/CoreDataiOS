@@ -48,11 +48,13 @@ class CategoryViewController: UITableViewController {
         return categories.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> CategoryItemCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryItemCell
         let category = categories[indexPath.row]
-        cell.textLabel?.text = category.name
-        cell.detailTextLabel?.text = DateFormatter.localizedString(from: category.creationDate!, dateStyle: .short, timeStyle: .short)
+        cell.configure(category: category)
+        cell.title.text = category.name
+        cell.date.text = DateFormatter.localizedString(from: category.creationDate!, dateStyle: .short, timeStyle: .short)
+        cell.delegate = self
         return cell
     }
     
@@ -102,14 +104,12 @@ class CategoryViewController: UITableViewController {
     
     @IBOutlet weak var btnFiltres: UIBarButtonItem!
     
-    func editCategory(){
-        //let category = categories[indexPath.row]
-        
-        let alertController = UIAlertController(title: "NOMCATEGORIE",
+    func editCategory(category: Category){
+        let alertController = UIAlertController(title: "Modification d'une catégorie",
         message: "Modifier le nom",
                                                 preferredStyle: .alert)
         alertController.addTextField{
-            textField in textField.placeholder = "Nom..."
+            textField in textField.text = category.name
         }
         
         let cancelAction = UIAlertAction(title: "Annuler",
@@ -121,7 +121,7 @@ class CategoryViewController: UITableViewController {
                   let textField = alertController.textFields?.first else {
                 return
             }
-            //self.editCategory(category: category, title: textField.text!)
+            DataManager.sharedDataManager.editCategory(category: category, name: textField.text)
             self.categories = DataManager.sharedDataManager.fetchCategories()
             self.tableView.reloadData()
         }
@@ -146,6 +146,12 @@ extension CategoryViewController: FilterManagerDelegate {
     func filterHasChange() {
         categories = DataManager.sharedDataManager.fetchCategories()
         tableView.reloadData()
+    }
+}
+
+extension CategoryViewController: CategoryItemCellDelegate{
+    func categoryItemCell(_ cell: CategoryItemCell, didEditFor: Category) {
+        editCategory(category: didEditFor)
     }
 }
 
