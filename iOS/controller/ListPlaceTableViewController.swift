@@ -63,23 +63,10 @@ class ListPlaceTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> LandmarkItemCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! LandmarkItemCell
         let place = landmarks[indexPath.row]
-        cell.title.text = place.title
-        cell.desc.text = place.desc
-        if let image = place.image {
-            cell.landmarkImage.image = UIImage(data: image)
-        } else {
-            cell.landmarkImage.image = UIImage(systemName: "photo")
-        }
-        cell.favorite.image = place.isFavorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
-        
-        cell.favButton.addTarget(self, action:#selector(addToFav), for: UIControl.Event.touchUpInside)
-        
+        cell.configure(landmark: place)
         return cell
     }
-    
-    @objc func addToFav(_ sender: UIButton){
-        self.tableView.reloadData()
-    }
+
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let place = landmarks[indexPath.row]

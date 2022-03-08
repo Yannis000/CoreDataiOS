@@ -8,11 +8,32 @@
 import Foundation
 import UIKit
 
+protocol LandmarkItemCellDelegate : AnyObject {
+    func landmarkItemCell(_ cell: LandmarkItemCell, didChangeFavoriteFor: Landmark)
+}
+
 class LandmarkItemCell: UITableViewCell{
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var favorite: UIImageView!
     @IBOutlet weak var landmarkImage: UIImageView!
-    @IBOutlet weak var favButton: UIButton!
+    
+    var delegate : LandmarkItemCellDelegate!
+    
+    @IBAction func addToFav(_ sender: Any) {
+        //self.delegate.landmarkItemCell(self, didChangeFavoriteFor: Landmark)
+    }
+    
+    func configure(landmark: Landmark){
+        title.text = landmark.title
+        desc.text = landmark.desc
+        if let image = landmark.image {
+            landmarkImage.image = UIImage(data: image)
+        } else {
+            landmarkImage.image = UIImage(systemName: "photo")
+        }
+        favorite.image = landmark.isFavorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+    }
+    
 }
