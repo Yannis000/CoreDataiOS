@@ -17,6 +17,7 @@ class PlaceDetailsViewController: UIViewController {
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var dateCrea: UILabel!
     @IBOutlet weak var dateModif: UILabel!
+    @IBOutlet weak var likeButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +35,21 @@ class PlaceDetailsViewController: UIViewController {
             desc.text = landmark.desc
             dateCrea.text = DateFormatter.localizedString(from: landmark.creationDate!, dateStyle: .short, timeStyle: .short)
             dateModif.text = DateFormatter.localizedString(from: landmark.modificationDate!, dateStyle: .short, timeStyle: .short)
+            updateLike()
         }
     }
     
+    @IBAction func likeItem(_ sender: Any) {
+        DataManager.sharedDataManager.toggleFavorite(landmark: landmark)
+        landmark.isFavorite.toggle()
+        updateLike()
+    }
+    
+    func updateLike(){
+        likeButton.image = landmark.isFavorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+    }
+    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editPlace"){
             let navViewController = segue.destination as! UINavigationController

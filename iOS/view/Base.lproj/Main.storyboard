@@ -404,7 +404,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="eyM-M6-fH8">
                         <rightBarButtonItems>
-                            <barButtonItem image="heart" catalog="system" id="Kid-Um-mpb"/>
+                            <barButtonItem image="heart" catalog="system" id="Kid-Um-mpb">
+                                <connections>
+                                    <action selector="likeItem:" destination="OX0-lJ-xNA" id="P01-h4-3cU"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="square.and.pencil" catalog="system" id="QcQ-kV-tih">
                                 <connections>
                                     <segue destination="sIt-Sl-g6p" kind="presentation" identifier="editPlace" id="AkV-be-Dud"/>
@@ -418,6 +422,7 @@
                         <outlet property="desc" destination="aJf-13-mTV" id="Hg9-5b-zqn"/>
                         <outlet property="imageView" destination="xmm-z0-loK" id="6UO-TW-OdN"/>
                         <outlet property="latitude" destination="akq-Ix-Zw7" id="kj7-mD-YAg"/>
+                        <outlet property="likeButton" destination="Kid-Um-mpb" id="hn9-Wf-uiu"/>
                         <outlet property="longitude" destination="ugr-Iy-xD0" id="EMs-fz-5AF"/>
                     </connections>
                 </viewController>
@@ -529,7 +534,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WC1-2X-1Qv"/>
+        <segue reference="AkV-be-Dud"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
