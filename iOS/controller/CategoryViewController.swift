@@ -48,10 +48,10 @@ class CategoryViewController: UITableViewController {
         return categories.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> CategoryItemCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryItemCell
         let category = categories[indexPath.row]
-        cell.textLabel?.text = category.name
+        cell.title.text = category.name
         cell.detailTextLabel?.text = DateFormatter.localizedString(from: category.creationDate!, dateStyle: .short, timeStyle: .short)
         return cell
     }
