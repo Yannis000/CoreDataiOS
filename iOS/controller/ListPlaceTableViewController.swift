@@ -64,6 +64,7 @@ class ListPlaceTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! LandmarkItemCell
         let place = landmarks[indexPath.row]
         cell.configure(landmark: place)
+        cell.delegate = self
         return cell
     }
 
@@ -111,6 +112,14 @@ extension ListPlaceTableViewController: UISearchResultsUpdating {
 
 extension ListPlaceTableViewController: FilterManagerDelegate {
     func filterHasChange() {
+        landmarks = DataManager.sharedDataManager.fetchLandmarks(category: currentCategory)
+        tableView.reloadData()
+    }
+}
+
+extension ListPlaceTableViewController: LandmarkItemCellDelegate {
+    func landmarkItemCell(_ cell: LandmarkItemCell, didChangeFavoriteFor: Landmark) {
+        DataManager.sharedDataManager.toggleFavorite(landmark: didChangeFavoriteFor)
         landmarks = DataManager.sharedDataManager.fetchLandmarks(category: currentCategory)
         tableView.reloadData()
     }
